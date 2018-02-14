@@ -5,6 +5,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System;
+using System.Threading.Tasks;
 
 namespace Wicket.Droid {
   [Activity(Label = "Wicket", MainLauncher = true, Icon = "@mipmap/icon")]
@@ -22,15 +23,20 @@ namespace Wicket.Droid {
       // Get our button from the layout resource,
       // and attach an event to it
       Button button = FindViewById<Button>(Resource.Id.myButton);
-
       button.Click += delegate { button.Text = $"{count++} clicks!"; };
 
-      Button crashButton = FindViewById<Button>(Resource.Id.crashButton);
+      var task = Task.Run(async () => await Crashes.IsEnabledAsync());
+      bool enabled = task.Result;
+      if (!enabled) {
+        Console.WriteLine("crashes not enabled!");
+      }
 
+      Button crashButton = FindViewById<Button>(Resource.Id.crashButton);
       crashButton.Click += delegate {
         Console.WriteLine("Attempting to crash our own app!");
-        CrashMe2(null);
+        CrashMe3();
       };
+
     }
 
     int CrashMe() {
@@ -39,6 +45,10 @@ namespace Wicket.Droid {
 
     void CrashMe2(string testStr) {
       Console.WriteLine(testStr.Length);
+    }
+
+    void CrashMe3() {
+      Crashes.GenerateTestCrash();
     }
   }
 }
