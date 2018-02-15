@@ -11,6 +11,16 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/crashButton"
-        android:text="@string/crash" />
+        android:id="@+id/crashButton1"
+        android:text="@string/crash1" />
+    <Button
+        android:text="@string/crash2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/crashButton2" />
+    <Button
+        android:text="@string/crash3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/crashButton3" />
 </LinearLayout>
