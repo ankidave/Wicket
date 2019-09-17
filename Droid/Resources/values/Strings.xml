@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
-	<string name="crash">Crash my app!</string>
+	<string name="crash1">Crash via exception</string>
+	<string name="crash2">Crash via native</string>
+	<string name="crash3">Crash via stack overflow</string>
 	<string name="app_name">Wicket.Droid</string>
 </resources>
